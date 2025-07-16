@@ -5,13 +5,19 @@ import 'package:test_app/screens/signup-screen.dart';
 import 'package:test_app/services/auth-service.dart';
 import 'package:test_app/utils/app_constant.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  bool _obscurePassword = true;
   final AuthService authService = AuthService();
-
-  LoginScreen({super.key});
 
   void login(BuildContext context) async {
     final email = emailController.text.trim();
@@ -76,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: "EMAIL ADDRESS",
-                    hintText: "",
+                    hintText: "example@gmail.com",
                     filled: true,
                     fillColor: Colors.grey.shade100,
                     suffixIcon: const Icon(
@@ -91,24 +97,39 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 TextField(
                   controller: passwordController,
-                  obscureText: true,
+                  obscureText: _obscurePassword,
                   decoration: InputDecoration(
                     labelText: "PASSWORD",
                     hintText: "******",
                     filled: true,
                     fillColor: Colors.grey.shade100,
-                    suffixIcon: const Icon(Icons.visibility_off),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    suffix: GestureDetector(
-                      onTap: () {},
-                      child: const Text(
-                        "Forgot password?",
-                        style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontSize: 12,
-                        ),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      // TODO: forgot password flow
+                    },
+                    child: const Text(
+                      "Forgot password?",
+                      style: TextStyle(
+                        color: Colors.deepPurple,
+                        fontSize: 12,
                       ),
                     ),
                   ),
@@ -153,9 +174,7 @@ class LoginScreen extends StatelessWidget {
                       onTap: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => SignupScreen(),
-                          ),
+                          MaterialPageRoute(builder: (_) =>  SignupScreen()),
                         );
                       },
                       child: const Text(
