@@ -3,8 +3,8 @@
 A new Flutter project.
 
 
-(![Screenshot_2025-07-28-08-58-34-26_2c4ca0345a11d98bb30a0d5ea75cd67d](https://github.com/user-attachments/assets/04deb76a-6ed0-480c-80be-d0985dd795ca)
-)
+<img width="227" height="284" alt="1" src="https://github.com/user-attachments/assets/6f28b60f-f52b-493e-85de-cddbfb3b68a9" />
+
 
 ## Getting Started
 
