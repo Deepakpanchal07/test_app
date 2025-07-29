@@ -1,9 +1,8 @@
 # test_app
 
 A new Flutter project.
-
-
-<img width="227" height="284" alt="1" src="https://github.com/user-attachments/assets/6f28b60f-f52b-493e-85de-cddbfb3b68a9" />
+![Screenshot 2025-06-26 105556](<img width="227" height="284" alt="1" src="https://github.com/user-attachments/assets/fa154902-5238-4452-b7f7-091f5ec1f045" />
+)
 
 
 ## Getting Started
